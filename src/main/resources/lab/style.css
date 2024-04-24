@@ -1,0 +1,17 @@
+.backdrop {
+    -fx-background-image: url('src\main\resources\lab\backdrop.png');
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+}
+
+.btn {
+    -fx-background-color: rgba(0, 255, 166, 0.233);
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-color: rgb(0, 255, 166);
+    -fx-font-weight: bold;
+}
+
+.btn :hover {
+    -fx-background-color: rgb(0, 255, 166);
+}
