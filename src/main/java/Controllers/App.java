@@ -1,4 +1,4 @@
-package lab;
+package Controllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,8 +18,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("intro"));
-        stage.setTitle("FrameSnap");
+        scene = new Scene(loadFXML("main"));
+        stage.setTitle("Honors Project");
         stage.setScene(scene);
         stage.show();
     }

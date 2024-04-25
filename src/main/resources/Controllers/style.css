@@ -15,3 +15,21 @@
 .btn :hover {
     -fx-background-color: rgb(0, 255, 166);
 }
+
+
+.circleBtns {
+    -fx-border-color: red;
+    -fx-border-radius: 50%;
+    -fx-background-color: rgba(255, 0, 0, 0.406);
+    -fx-background-radius: 50%;
+    -fx-text-fill: red;
+}
+
+.galleryBackground {
+    -fx-background-color: rgb(9, 0, 59);
+}
+
+
+.selected {
+    border: aliceblue;
+}

@@ -14,16 +14,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ControllerIntro">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ControllerIntro">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Instructions" />
-            </items>
-          </Menu>
-        </menus>
+         <menus>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem fx:id="helper" mnemonicParsing="false" text="Instructions" />
+               </items>
+            </Menu>
+         </menus>
       </MenuBar>
    </top>
    <center>
@@ -56,7 +56,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="342.0" layoutY="35.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="136.0" styleClass="btn" stylesheets="@style.css" text="Go to your images" />
+                        <Button fx:id="GoToImg" layoutX="342.0" layoutY="35.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="136.0" styleClass="btn" stylesheets="@style.css" text="Go to your images" />
                      </children>
                   </HBox>
                </children>
