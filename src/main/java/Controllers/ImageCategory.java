@@ -56,7 +56,8 @@ public class ImageCategory extends VBox {
         Category.setText(categoryName);
     }
 
-    public void openImages() {
+    public void openImages(ArrayList<Image> imgs) {
+        imgs = images;
         loadFXML("Gallery.fxml");
     }
 

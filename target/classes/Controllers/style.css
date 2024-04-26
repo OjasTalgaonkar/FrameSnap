@@ -31,5 +31,5 @@
 
 
 .selected {
-    border: aliceblue;
+    -fx-border-color: black;
 }

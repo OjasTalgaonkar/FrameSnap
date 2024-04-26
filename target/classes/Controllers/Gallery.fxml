@@ -10,20 +10,20 @@
 <?import javafx.scene.text.Font?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="galleryBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="galleryBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ControllerHome">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Go Back" />
+              <MenuItem fx:id="goBack" mnemonicParsing="false" text="Go Back" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
    </top>
    <left>
-      <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="57.0" styleClass="circleBtns" stylesheets="@style.css" text="&lt;-" BorderPane.alignment="CENTER">
+      <Button fx:id="goDown" mnemonicParsing="false" prefHeight="57.0" prefWidth="57.0" styleClass="circleBtns" stylesheets="@style.css" text="&lt;-" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets left="30.0" />
          </BorderPane.margin>
@@ -33,7 +33,7 @@
       </Button>
    </left>
    <right>
-      <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="57.0" styleClass="circleBtns" stylesheets="@style.css" text="-&gt;" BorderPane.alignment="CENTER">
+      <Button fx:id="goUp" mnemonicParsing="false" prefHeight="57.0" prefWidth="57.0" styleClass="circleBtns" stylesheets="@style.css" text="-&gt;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets right="30.0" />
          </BorderPane.margin>
@@ -43,6 +43,6 @@
       </Button>
    </right>
    <center>
-      <ImageView fitHeight="311.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+      <ImageView fx:id="PhotoView" fitHeight="311.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
