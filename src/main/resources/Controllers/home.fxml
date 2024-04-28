@@ -16,7 +16,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ControllerHome">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="677.0" stylesheets="@style.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="677.0" style="-fx-background-color: beige;" stylesheets="@style.css">
          <center>
             <GridPane fx:id="CategoryGrid" alignment="CENTER" prefHeight="305.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <columnConstraints>
@@ -42,11 +42,6 @@
                         <MenuItem fx:id="Close" mnemonicParsing="false" text="Close" />
                      </items>
                   </Menu>
-                  <Menu mnemonicParsing="false" text="Help">
-                     <items>
-                        <MenuItem fx:id="Instructions" mnemonicParsing="false" text="Instructions" />
-                     </items>
-                  </Menu>
                </menus>
             </MenuBar>
          </top>
@@ -58,6 +53,7 @@
                   <Menu mnemonicParsing="false" text="File">
                      <items>
                         <MenuItem fx:id="goBack" mnemonicParsing="false" text="Go Back" />
+                        <MenuItem fx:id="delete" mnemonicParsing="false" text="Remove Image" />
                      </items>
                   </Menu>
                </menus>
@@ -66,7 +62,7 @@
          <left>
             <Button fx:id="goDown" mnemonicParsing="false" prefHeight="57.0" prefWidth="57.0" styleClass="circleBtns" stylesheets="@style.css" text="&lt;-" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets left="30.0" />
+                  <Insets left="20.0" />
                </BorderPane.margin>
                <font>
                   <Font size="22.0" />
@@ -76,7 +72,7 @@
          <right>
             <Button fx:id="goUp" mnemonicParsing="false" prefHeight="57.0" prefWidth="57.0" styleClass="circleBtns" stylesheets="@style.css" text="-&gt;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets right="30.0" />
+                  <Insets right="20.0" />
                </BorderPane.margin>
                <font>
                   <Font size="22.0" />
@@ -84,7 +80,7 @@
             </Button>
          </right>
          <center>
-            <ImageView fx:id="PhotoView" fitHeight="311.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <ImageView fx:id="PhotoView" fitHeight="430.0" fitWidth="502.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>

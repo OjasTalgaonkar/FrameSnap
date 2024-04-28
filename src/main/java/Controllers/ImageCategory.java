@@ -26,11 +26,8 @@ public class ImageCategory extends VBox {
         Cover.setFitHeight(131);
         Cover.setFitWidth(150);
         Cover.setPreserveRatio(true);
-        try {
-            setCover();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        setCover();
+
         Category = new Label(category);
         images = new ArrayList<Image>();
 
@@ -38,16 +35,20 @@ public class ImageCategory extends VBox {
         setAlignment(Pos.CENTER);
     }
 
-    public void setCover() throws FileNotFoundException {
-        if (this.images == null || images.size() == 0) {
-            Cover.setImage(new Image(new FileInputStream("src\\main\\resources\\Controllers\\questionMark.png")));
-        } else {
-            Cover.setImage(images.get(images.size() - 1));
-        }
+    public void setCover() {
+        try {
+            if (this.images == null || images.size() == 0) {
+                Cover.setImage(new Image(new FileInputStream("src\\main\\resources\\Controllers\\questionMark.png")));
+            } else {
+                Cover.setImage(images.get(images.size() - 1));
+            }
 
-        Cover.setFitHeight(131);
-        Cover.setFitWidth(150);
-        Cover.setPreserveRatio(true);
+            Cover.setFitHeight(131);
+            Cover.setFitWidth(150);
+            Cover.setPreserveRatio(true);
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
     }
 
     public boolean isSelected() {
@@ -60,6 +61,10 @@ public class ImageCategory extends VBox {
 
     public void addImage(Image newImage) {
         images.add(newImage);
+    }
+
+    public void removeImage(Image image) {
+        images.remove(image);
     }
 
     public ArrayList<Image> getImages() {

@@ -1,5 +1,6 @@
 package Controllers;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
@@ -16,15 +17,10 @@ public class ControllerIntro {
     private Button GoToImg;
 
     @FXML
-    private MenuItem helper;
-
-    @FXML
     void initialize() {
         GoToImg.setOnAction(event -> {
             loadFXML("home.fxml");
         });
-
-        helper.setOnAction(null);
     }
 
     private void loadFXML(String fxmlFileName) {

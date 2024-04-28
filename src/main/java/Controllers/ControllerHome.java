@@ -52,6 +52,9 @@ public class ControllerHome {
     private BorderPane theGallery;
 
     @FXML
+    private MenuItem delete;
+
+    @FXML
     private ImageView PhotoView;
 
     @FXML
@@ -68,7 +71,7 @@ public class ControllerHome {
     Image imageInView = null;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
         theGallery.setVisible(false);
         addImageCategory("Landscape", 0, 0);
         addImageCategory("Portrait", 1, 0);
@@ -81,6 +84,14 @@ public class ControllerHome {
         open.setOnAction(e -> {
             theGallery.setVisible(true);
             images = selectedCategory.getImages();
+
+            if (images.size() != 0) {
+                imageInView = images.get(0);
+            } else {
+                imageInView = null;
+            }
+
+            PhotoView.setImage(imageInView);
         });
 
         rename.setOnAction(e -> {
@@ -100,7 +111,6 @@ public class ControllerHome {
 
         importImg.setOnAction(e -> {
             if (selectedCategory != null) {
-
                 FileChooser fileChooser = new FileChooser(); // Opening file window
                 File projectDirectory = new File(System.getProperty("user.dir"));
                 fileChooser.setInitialDirectory(projectDirectory);
@@ -110,21 +120,14 @@ public class ControllerHome {
                 fileChooser.setTitle("Import an image"); // taking user selected file
                 File selectedFile = fileChooser.showOpenDialog(null);
                 selectedCategory.addImage(new Image(selectedFile.toURI().toString()));
+                System.out.println(selectedCategory.getImages().size());
 
             }
+
+            selectedCategory.setCover();
         });
 
         // for the gallery
-
-        if (images.size() != 0)
-
-        {
-            imageInView = images.get(0);
-        } else {
-            imageInView = null;
-        }
-
-        PhotoView.setImage(imageInView);
 
         goDown.setOnAction(e -> {
             if (imageInView == images.get(0)) {
@@ -141,10 +144,25 @@ public class ControllerHome {
             } else {
                 imageInView = images.get(images.indexOf(imageInView) + 1);
             }
+            PhotoView.setImage(imageInView);
         });
 
         goBack.setOnAction(e -> {
             theGallery.setVisible(false);
+        });
+
+        delete.setOnAction(e -> {
+            if (images.size() == 1) {
+                images.remove(imageInView);
+                PhotoView.setImage(null);
+                goBack.fire();
+            } else {
+                images.remove(imageInView);
+                selectedCategory.removeImage(imageInView);
+                goUp.fire();
+
+            }
+            selectedCategory.setCover();
         });
 
     }
