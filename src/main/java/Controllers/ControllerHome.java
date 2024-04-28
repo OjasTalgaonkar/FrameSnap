@@ -127,6 +127,10 @@ public class ControllerHome {
             selectedCategory.setCover();
         });
 
+        Close.setOnAction(e -> {
+            System.exit(0);
+        });
+
         // for the gallery
 
         goDown.setOnAction(e -> {
