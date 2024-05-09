@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ControllerHome">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="677.0" style="-fx-background-color: beige;" stylesheets="@style.css">
@@ -34,7 +33,7 @@
          <top>
             <MenuBar BorderPane.alignment="CENTER">
                <menus>
-                  <Menu mnemonicParsing="false" text="File">
+                  <Menu mnemonicParsing="false" text="Functions">
                      <items>
                         <MenuItem fx:id="importImg" mnemonicParsing="false" text="Import images " />
                         <MenuItem fx:id="open" mnemonicParsing="false" text="Open Category" />
@@ -50,7 +49,7 @@
          <top>
             <MenuBar BorderPane.alignment="CENTER">
                <menus>
-                  <Menu mnemonicParsing="false" text="File">
+                  <Menu mnemonicParsing="false" text="Functions">
                      <items>
                         <MenuItem fx:id="goBack" mnemonicParsing="false" text="Go Back" />
                         <MenuItem fx:id="delete" mnemonicParsing="false" text="Remove Image" />

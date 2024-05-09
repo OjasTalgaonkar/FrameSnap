@@ -133,6 +133,7 @@ public class ControllerHome {
 
         // for the gallery
 
+        
         goDown.setOnAction(e -> {
             if (imageInView == images.get(0)) {
                 imageInView = images.get(images.size() - 1);
