@@ -20,6 +20,7 @@ public class ImageCategory extends VBox {
     private Label Category;
     private ArrayList<Image> images;
     private boolean selected = false;
+    private boolean CoverSet;
 
     public ImageCategory(String category) {
         Cover = new ImageView();
@@ -27,6 +28,7 @@ public class ImageCategory extends VBox {
         Cover.setFitWidth(150);
         Cover.setPreserveRatio(true);
         setCover();
+        CoverSet = false;
 
         Category = new Label(category);
         images = new ArrayList<Image>();
@@ -36,19 +38,26 @@ public class ImageCategory extends VBox {
     }
 
     public void setCover() {
-        try {
-            if (this.images == null || images.size() == 0) {
-                Cover.setImage(new Image(new FileInputStream("src\\main\\resources\\Controllers\\questionMark.png")));
-            } else {
-                Cover.setImage(images.get(images.size() - 1));
-            }
+        if (CoverSet == false) { // only executes when cover hasn't been set manually
+            try {
+                if (this.images == null || images.size() == 0) {
+                    Cover.setImage(new Image(new FileInputStream("src\\main\\resources\\Controllers\\NotFound.png")));
+                } else {
+                    Cover.setImage(images.get(images.size() - 1));
+                }
 
-            Cover.setFitHeight(131);
-            Cover.setFitWidth(150);
-            Cover.setPreserveRatio(true);
-        } catch (Exception e) {
-            System.out.println("Error");
+                Cover.setFitHeight(131);
+                Cover.setFitWidth(150);
+                Cover.setPreserveRatio(true);
+            } catch (Exception e) {
+                System.out.println("Error");
+            }
         }
+    }
+
+    public void setCover(Image image) { // to set custom covers
+        Cover.setImage(image);
+        CoverSet = true; // Cover wont change automatically when new images are added
     }
 
     public boolean isSelected() {

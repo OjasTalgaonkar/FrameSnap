@@ -1,14 +1,14 @@
 package Controllers;
 
-import java.io.File;
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class ControllerIntro {
@@ -19,11 +19,21 @@ public class ControllerIntro {
     @FXML
     void initialize() {
         GoToImg.setOnAction(event -> {
-            loadFXML("home.fxml");
+            loadFXML("home.fxml", event);
+        });
+
+        GoToImg.setOnMouseEntered(ev -> {
+            GoToImg.getStyleClass().remove("btn");
+            GoToImg.getStyleClass().add("btn_hover");
+        });
+
+        GoToImg.setOnMouseExited(ev -> {
+            GoToImg.getStyleClass().remove("btn_hover");
+            GoToImg.getStyleClass().add("btn");
         });
     }
 
-    private void loadFXML(String fxmlFileName) {
+    private void loadFXML(String fxmlFileName, ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFileName));
             Parent root = fxmlLoader.load();
@@ -32,6 +42,9 @@ public class ControllerIntro {
             stage.setScene(scene);
             stage.setTitle("Home Window");
             stage.show();
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

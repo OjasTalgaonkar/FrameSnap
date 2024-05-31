@@ -15,7 +15,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ControllerHome">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="677.0" style="-fx-background-color: beige;" stylesheets="@style.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="677.0" styleClass="homePage" stylesheets="@style.css">
          <center>
             <GridPane fx:id="CategoryGrid" alignment="CENTER" prefHeight="305.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <columnConstraints>
@@ -31,9 +31,9 @@
             </GridPane>
          </center>
          <top>
-            <MenuBar BorderPane.alignment="CENTER">
+            <MenuBar style="-fx-background-color: #F7A992;" BorderPane.alignment="CENTER">
                <menus>
-                  <Menu mnemonicParsing="false" text="Functions">
+                  <Menu mnemonicParsing="false" styleClass="menuSec" text="Functions">
                      <items>
                         <MenuItem fx:id="importImg" mnemonicParsing="false" text="Import images " />
                         <MenuItem fx:id="open" mnemonicParsing="false" text="Open Category" />
@@ -45,7 +45,7 @@
             </MenuBar>
          </top>
       </BorderPane>
-      <BorderPane fx:id="theGallery" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="687.0" styleClass="galleryBackground" stylesheets="@style.css" visible="false">
+      <BorderPane fx:id="theGallery" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="687.0" styleClass="galleryBackground" stylesheets="@style.css">
          <top>
             <MenuBar BorderPane.alignment="CENTER">
                <menus>
@@ -53,6 +53,7 @@
                      <items>
                         <MenuItem fx:id="goBack" mnemonicParsing="false" text="Go Back" />
                         <MenuItem fx:id="delete" mnemonicParsing="false" text="Remove Image" />
+                        <MenuItem fx:id="CustomCover" mnemonicParsing="false" text="Set Cover" />
                      </items>
                   </Menu>
                </menus>

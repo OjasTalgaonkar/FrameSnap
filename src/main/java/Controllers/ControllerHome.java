@@ -61,6 +61,9 @@ public class ControllerHome {
     private MenuItem goBack;
 
     @FXML
+    private MenuItem CustomCover;
+
+    @FXML
     private Button goDown;
 
     @FXML
@@ -133,7 +136,6 @@ public class ControllerHome {
 
         // for the gallery
 
-        
         goDown.setOnAction(e -> {
             if (imageInView == images.get(0)) {
                 imageInView = images.get(images.size() - 1);
@@ -143,6 +145,17 @@ public class ControllerHome {
             PhotoView.setImage(imageInView);
         });
 
+        goDown.setOnMousePressed(e -> {
+            goDown.getStyleClass().remove("circleBtns");
+            goDown.getStyleClass().add("circleBtns_Click");
+
+        });
+
+        goDown.setOnMouseReleased(e -> {
+            goDown.getStyleClass().remove("circleBtns_Click");
+            goDown.getStyleClass().add("circleBtns");
+        });
+
         goUp.setOnAction(e -> {
             if (imageInView == images.get(images.size() - 1)) {
                 imageInView = images.get(0);
@@ -150,6 +163,17 @@ public class ControllerHome {
                 imageInView = images.get(images.indexOf(imageInView) + 1);
             }
             PhotoView.setImage(imageInView);
+        });
+
+        goUp.setOnMousePressed(e -> {
+            goUp.getStyleClass().remove("circleBtns");
+            goUp.getStyleClass().add("circleBtns_Click");
+
+        });
+
+        goUp.setOnMouseReleased(e -> {
+            goUp.getStyleClass().remove("circleBtns_Click");
+            goUp.getStyleClass().add("circleBtns");
         });
 
         goBack.setOnAction(e -> {
@@ -168,6 +192,10 @@ public class ControllerHome {
 
             }
             selectedCategory.setCover();
+        });
+
+        CustomCover.setOnAction(e -> {
+            selectedCategory.setCover(imageInView);
         });
 
     }
@@ -203,4 +231,5 @@ public class ControllerHome {
             e.printStackTrace();
         }
     }
+
 }
