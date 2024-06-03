@@ -1,9 +1,13 @@
 package Controllers;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +47,13 @@ public class ControllerHome {
     private MenuItem open;
 
     @FXML
+    private MenuItem save;
+
+    @FXML
     private MenuItem rename;
+
+    @FXML
+    private MenuItem reset;
 
     private ImageCategory selectedCategory = null;
 
@@ -121,18 +131,30 @@ public class ControllerHome {
                         new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.bmp", "*.jpeg"));
 
                 fileChooser.setTitle("Import an image"); // taking user selected file
-                File selectedFile = fileChooser.showOpenDialog(null);
-                selectedCategory.addImage(new Image(selectedFile.toURI().toString()));
-                System.out.println(selectedCategory.getImages().size());
+
+                List<File> selectedFiles = fileChooser.showOpenMultipleDialog(null);
+
+                if (selectedFiles != null) {
+                    for (File file : selectedFiles) {
+                        selectedCategory.addImage(new Image(file.toURI().toString()));
+                    }
+                    System.out.println(selectedCategory.getImages().size());
+                }
 
             }
 
             selectedCategory.setCover();
         });
 
+        save.setOnAction(e -> saveCategories());
+
+        reset.setOnAction(e -> resetCategories());
+
         Close.setOnAction(e -> {
             System.exit(0);
         });
+
+        loadCategories();
 
         // for the gallery
 
@@ -195,7 +217,9 @@ public class ControllerHome {
         });
 
         CustomCover.setOnAction(e -> {
-            selectedCategory.setCover(imageInView);
+            if (imageInView != null) {
+                selectedCategory.setCover(imageInView);
+            }
         });
 
     }
@@ -215,6 +239,98 @@ public class ControllerHome {
         selectedCategory = category;
         selectedCategory.getStyleClass().add("selected");
         System.out.println("SELECTED" + selectedCategory);
+    }
+
+    private static final String SAVE_FILE = "image_categories.txt";
+
+    private void saveCategories() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(SAVE_FILE))) {
+            for (Node node : CategoryGrid.getChildren()) {
+                if (node instanceof StackPane) {
+                    StackPane stackPane = (StackPane) node;
+                    if (stackPane.getChildren().get(0) instanceof ImageCategory) {
+                        ImageCategory category = (ImageCategory) stackPane.getChildren().get(0);
+                        writer.write(category.getCategoryName() + "\n");
+                        Image coverImage = category.getCover();
+                        writer.write((coverImage != null ? coverImage.getUrl() : "null") + "\n");
+                        for (Image image : category.getImages()) {
+                            writer.write(image.getUrl() + "\n");
+                        }
+                        writer.write("END\n");
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadCategories() {
+        // Clear existing categories from the UI
+        CategoryGrid.getChildren().clear();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(SAVE_FILE))) {
+            String line;
+            ImageCategory currentCategory = null;
+            while ((line = reader.readLine()) != null) {
+                if (line.equals("END")) {
+                    currentCategory = null;
+                } else if (currentCategory == null) {
+                    currentCategory = new ImageCategory(line);
+                    String coverImageUrl = reader.readLine();
+                    if (!"null".equals(coverImageUrl)) {
+                        currentCategory.setCover(new Image(coverImageUrl));
+                    }
+                    addImageCategoryToGrid(currentCategory);
+                } else {
+                    currentCategory.addImage(new Image(line));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void addImageCategoryToGrid(ImageCategory category) {
+        int rowIndex = CategoryGrid.getChildren().size() / 4; // Each row contains 4 categories
+        int columnIndex = CategoryGrid.getChildren().size() % 4; // Each row contains 4 categories
+
+        // Add additional rows if needed
+        if (columnIndex == 0 && rowIndex > 0) {
+            CategoryGrid.addRow(rowIndex);
+        }
+
+        StackPane stackPane = new StackPane(category);
+        stackPane.getStyleClass().add("category-pane");
+        stackPane.setOnMouseClicked(event -> selectCategory(category));
+        CategoryGrid.add(stackPane, columnIndex, rowIndex);
+    }
+
+    private void resetCategories() {
+        // Clear the existing categories from the UI
+        CategoryGrid.getChildren().clear();
+
+        // Clear the in-memory list of categories
+        selectedCategory = null;
+
+        // Delete the save file
+        File saveFile = new File(SAVE_FILE);
+        if (saveFile.exists()) {
+            saveFile.delete();
+        }
+
+        // Optionally, reinitialize the default categories if needed
+
+        addImageCategory("Landscape", 0, 0);
+        addImageCategory("Portrait", 1, 0);
+        addImageCategory("Animals", 2, 0);
+        addImageCategory("Food", 3, 0);
+        for (int i = 0; i < 4; i++) {
+            addImageCategory("???", i, 1);
+        }
+
+        saveCategories();
+
     }
 
     private void loadFXML(String fxmlFileName) {

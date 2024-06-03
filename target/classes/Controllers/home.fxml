@@ -33,19 +33,25 @@
          <top>
             <MenuBar style="-fx-background-color: #F7A992;" BorderPane.alignment="CENTER">
                <menus>
+                  <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="save" mnemonicParsing="false" text="Save All " />
+                      <MenuItem fx:id="reset" mnemonicParsing="false" text="Reset Memory" />
+                        <MenuItem fx:id="Close" mnemonicParsing="false" text="Close" />
+                    </items>
+                  </Menu>
                   <Menu mnemonicParsing="false" styleClass="menuSec" text="Functions">
                      <items>
                         <MenuItem fx:id="importImg" mnemonicParsing="false" text="Import images " />
                         <MenuItem fx:id="open" mnemonicParsing="false" text="Open Category" />
                         <MenuItem fx:id="rename" mnemonicParsing="false" text="Rename Category" />
-                        <MenuItem fx:id="Close" mnemonicParsing="false" text="Close" />
                      </items>
                   </Menu>
                </menus>
             </MenuBar>
          </top>
       </BorderPane>
-      <BorderPane fx:id="theGallery" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="687.0" styleClass="galleryBackground" stylesheets="@style.css">
+      <BorderPane fx:id="theGallery" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="687.0" styleClass="galleryBackground" stylesheets="@style.css" visible="false">
          <top>
             <MenuBar BorderPane.alignment="CENTER">
                <menus>

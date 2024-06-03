@@ -60,6 +60,10 @@ public class ImageCategory extends VBox {
         CoverSet = true; // Cover wont change automatically when new images are added
     }
 
+    public Image getCover() {
+        return Cover.getImage();
+    }
+
     public boolean isSelected() {
         return selected;
     }
