@@ -35,11 +35,11 @@ Clicking this will open a File explorer box where you can select an image</br>
 Use this function to open up the images in a viewing window. Now you can view any images you put in or remove any images.</br>
 <img width="460" height="340" src="ReadmeImages\OpenCategory.png">
 
-If there are no images in the category, it will be empty
+If there are no images in the category, it will be empty</br>
 <img width="460" height="340" src="ReadmeImages\EmptyGallery.png">
 
-If there are images, then it will show up like this
-<img width="460" height="340" src="ReadmeImages\ImageGallery.png">
+If there are images, then it will show up like this</br>
+<img width="460" height="340" src="ReadmeImages\ImageGallery.png"></br>
 Use the arrows on the gallery to navigate between images
 
 The gallery has two functions of its own in the "Functions" tab:
@@ -47,6 +47,10 @@ The gallery has two functions of its own in the "Functions" tab:
 1)Go Back-> This function takes you back to the Categories display
 
 2)Remove Image-> This function removes the current image from your category
+
+3)Set Cover-> Sets the category cover to the current image.
+
+Note: The cover usually changes automatically upon adding new images, but once a cover is set manually, the cover wont change automatically again.
 
 </details>
 
@@ -61,7 +65,14 @@ Doing this will open a text dialog box where you can enter the name</br>
 <details>
 <summary><b>Close Window</b></summary>
 This function lets you close the home window </br>
+Note: after a desicion to change the UI, this option is in the file menu instead of the functions menu </br>
 <img width="460" height="340" src="ReadmeImages\CloseWindow.png"> </br>
+</details>
+
+<details>
+<summary><b>Saving and Reseting</b></summary>
+Click on the save button in the file menu to save all organizing. To delete all progress, just click reset memory.</br>
+<img width="460" height="340" src="ReadmeImages\SaveAndReset.png">
 </details>
 
 </br>
@@ -72,12 +83,12 @@ This function lets you close the home window </br>
 Future Improvements
 </p>
 
-1. Will try to add a way to save images , because as of right now, all the data and organizing dissapears once you close the window.
+1. Maybe adding a way to crop/resize and edit images in the gallery window.
 
-2. Maybe adding a way to crop/resize and edit images in the gallery window.
+2. Right now , saving is done by writing the urls to the images. This poses the problem of images dissapearing once the location is changed. So in the near future, maybe an internal memory will be developed where images themselves are stored
 
-3. Improve the UI for the home page
+3. Adding a slideshow option and a way to share these images to certain platforms
 
-4. Allow adding multiple images at once , since adding one image each time is tedious
+4. Adding an inbuilt CLI to the app for more interesting navigation
 
-5. Allow custom cover setting
+5. Improving the UI/UX
