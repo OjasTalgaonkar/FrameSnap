@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea editable="false" prefHeight="302.0" prefWidth="383.0" style="-fx-control-inner-background: black; -fx-text-fill: #01ff56;" />
+      <TextField promptText="Enter a command" style="-fx-control-inner-background: grey;" />
+   </children>
+</VBox>
